@@ -31,6 +31,7 @@ class Customer {
     public int getTimeQueueing() {
         return  timeQueueing;
     }
+
     public int getTimeUsedScanning(){
         timeUsedScanning = this.itemsPicked * timeUsedToScanEachItem;
         return timeUsedScanning;
