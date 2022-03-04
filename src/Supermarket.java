@@ -5,33 +5,38 @@ import java.util.Random;
 public class Supermarket {
     public static void main(String[] args){
         //creatue queue
-        int queueCapacity = 20;
+        int queueCapacity = 3;
         int queueFlow = 2;
+        PriorityQueue<Customer> pq0 = new PriorityQueue<Customer>(queueCapacity, new CustomerComparator());
         PriorityQueue<Customer> pq1 = new PriorityQueue<Customer>(queueCapacity, new CustomerComparator());
         PriorityQueue<Customer> pq2 = new PriorityQueue<Customer>(queueCapacity, new CustomerComparator());
 
 
         //create customers
-        int customerAmount = 20;
+        int customerAmount = 4;
         Random rand = new Random();
 
         for (int i = 0; i < customerAmount; i++ ) {
             Customer customer = new Customer("customer" + i, rand.nextInt(60), rand.nextInt(30));
-           if (pq1.size() <= pq2.size()) {
-               pq1.add(customer);
+           pq0.add(customer);
+        }
+        while (!pq0.isEmpty()){
+            Customer customer = pq0.poll();
+            if (pq1.size() <= pq2.size()) {
+                pq1.add(customer);
+                customer.timeQueueing = pq1.size() * queueFlow;
 
-           }
-           else {
-               pq2.add(customer);
+            }
+            else {
+                pq2.add(customer);
+                customer.timeQueueing = pq2.size() * queueFlow;
 
-
-           }
+            }
         }
 
         System.out.println("Customers served in their priority order");
-    for (int i = 0; i <= pq1.size(); i++){
+    while (!pq1.isEmpty()) {
             Customer customer1 = pq1.poll();
-            customer1.timeQueueing = i * queueFlow;
 
 
             System.out.println("==================q1==============================");
@@ -43,9 +48,8 @@ public class Supermarket {
             System.out.println("=================q1============================");
 
         }
-        for (int i = 0; i <= pq2.size(); i++){
+        while (!pq2.isEmpty()) {
                 Customer customer2 = pq2.poll();
-                customer2.timeQueueing = i * queueFlow;
 
                 System.out.println("=================q2============================");
                 System.out.println(customer2.getName() + ", time arrived to queue after shopping: " + customer2.getTimeArrived());
