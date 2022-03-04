@@ -35,13 +35,13 @@ public class Supermarket {
 
             }
         }
-
+        //Printing out the different information about the customers leaving the store
         System.out.println("Customers served in their priority order");
-    while (!q1.isEmpty()) {
+        while (!q1.isEmpty()) {
             Customer customer1 = q1.poll();
 
 
-            System.out.println("==================q1==============================");
+            System.out.println("==================q1===========================");
             System.out.println(customer1.getName() + ", time arrived to queue after shopping: " + customer1.getTimeArrived());
             System.out.println("Time used queueing: " + customer1.getTimeQueueing());
             System.out.println("Time used scanning: " + customer1.getTimeUsedScanning());
@@ -57,7 +57,7 @@ public class Supermarket {
                 System.out.println("Time used queueing: " + customer2.getTimeQueueing());
                 System.out.println("Time used scanning: " + customer2.getTimeUsedScanning());
                 System.out.println("Total time used in store: " + customer2.getTotalTime());
-                System.out.println("==================q2==============================");
+                System.out.println("==================q2============================");
             }
     }
 } 
