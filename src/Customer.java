@@ -2,18 +2,20 @@ class Customer {
     public String name;
     public int timeArrived;
     public int timeQueueing;
+    public int timeQueueing1;
     public int itemsPicked;
     public int timeUsedScanning;
     public int timeUsedToScanEachItem = 1;
     public int totalTime;
 
+
     // A parameterized Customer constructor
-    public Customer(String name, int timeArrived, int timeQueueing, int itemsPicked) {
+    public Customer(String name, int timeArrived, int itemsPicked) {
 
         this.name = name;
         this.timeArrived = timeArrived;
-        this.timeQueueing = timeQueueing;
         this.itemsPicked = itemsPicked;
+        this.timeQueueing1 =
         getTimeUsedScanning();
 
     }
